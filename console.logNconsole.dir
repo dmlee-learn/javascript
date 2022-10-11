@@ -1,5 +1,5 @@
 console.log output body or value
-console.dir output object propertys
+console.dir output object properties
 
 console.log(document); //tag
-console.dir(document); //propertys
+console.dir(document); //properties
