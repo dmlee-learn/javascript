@@ -1,0 +1,5 @@
+console.log output body or value
+console.dir output object propertys
+
+console.log(document); //tag
+console.dir(document); //propertys
