@@ -1,0 +1,7 @@
+element is item in document
+
+we can change to the element property like innerText, autofocus, innerHtml 
+
+ accese ID
+  - let item = document.getElementById(id);
+     ex item.innerText = "right now";
