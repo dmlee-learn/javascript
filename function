@@ -1,0 +1,5 @@
+function sum(a, b) {
+  consoole.log(a + b);
+}
+
+sum(1, 2);
