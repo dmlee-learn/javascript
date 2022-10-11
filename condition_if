@@ -1,0 +1,13 @@
+if(conditionA) {
+  runA
+}
+else if(conditionB) {
+  runB
+}
+else {
+  runC
+}
+
+
+// == simple check
+// === value + type check
