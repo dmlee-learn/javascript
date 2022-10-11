@@ -1,3 +1,8 @@
 document 
  - already exists object
  - HTML
+
+properties
+ - document.title
+ - document.body
+ 
