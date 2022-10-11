@@ -5,3 +5,9 @@ we can change to the element property like innerText, autofocus, innerHtml
  accese ID
   - let item = document.getElementById(id);
      ex item.innerText = "right now";
+  - document.getElementsByClassName
+  - document.getElementsByName
+  - document.getElementsByTagName
+  - document.getElementsByTagNameNS
+  - document.querySelector(".ClassName h1")     //css style find / find first match itme / find class in h1 / noting is tag, . is class, # is id
+  - document.querySelectorAll
