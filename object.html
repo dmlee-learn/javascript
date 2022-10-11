@@ -1,8 +1,27 @@
+<script>
 //property is item in object
 const person = {
   name:'din',
   sex:'man',
   getName:
+}
+  
+const calculator = {
+    plus:function(a, b){
+        return a + b;
+    }
+    , minus:function(a, b) {
+        return a - b;
+    }
+    , times:function(a, b) {
+        return (a * b);
+    }
+    , divide:function(a, b) {
+        return a / b;
+    }
+    , power:function(a, b) {
+        return a ** b;
+    }
 }
 
 console.log(person);
@@ -10,3 +29,9 @@ person.name = 'dio';
 console.log(person);
 person.age = 50;
 console.log(person);
+  
+let aValue = prompt(); //입력 요청 팝업
+let bValue = prompt();
+alert(calculator.plus(aValue, bValue));
+ console.log(typeof aValue); // 데이터 타입 검사
+</script>
