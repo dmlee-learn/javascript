@@ -11,3 +11,16 @@ we can change to the element property like innerText, autofocus, innerHtml
   - document.getElementsByTagNameNS
   - document.querySelector(".ClassName h1")     //css style find / find first match itme / find class in h1 / noting is tag, . is class, # is id
   - document.querySelectorAll
+
+in property 
+ - event
+   name is start on~ ex) on mouse, keydown, keyup, click
+   have listen
+   use : let element = document.querySelector("#ClassName h1")
+         let handleClick = () => {
+             console.log('element clicked');
+         }
+         element.addEventListener("click", handleClick);
+         element.onclick = handleClick;
+ - style 
+   property ex element.style.color = 'red'
