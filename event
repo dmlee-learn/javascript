@@ -1,0 +1,15 @@
+
+   name is start on~ ex) on mouse, keydown, keyup, click, resize, copy, online, offline etc..
+   have listen
+   use : let element = document.querySelector("#ClassName h1")
+         let handleClick = () => {
+             console.log('element clicked');
+         }
+         element.addEventListener("click", handleClick);
+         element.onclick = handleClick;
+         element.removeEventListener('click', this.onclick)
+         
+         element.removeEventListener("click", () => {
+          this.closeDropdowns();
+        });
+        
