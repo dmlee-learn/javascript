@@ -1,0 +1,22 @@
+body {
+    background-color:beige;
+}
+
+h1 {
+    color:blue;
+    transition: 2s;
+}
+
+.good-font {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.active {
+    color:tomato;
+    transition: 2s;
+}
+
+.deactive {
+    color:aqua;
+    transition: 2s;
+}
