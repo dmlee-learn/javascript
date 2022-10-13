@@ -1,0 +1,6 @@
+text 
+ -make 
+   const text = "text";
+ -concat to text
+   "text" + "text";
+   `text ${text}`;

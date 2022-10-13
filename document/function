@@ -1,3 +1,5 @@
+//make for recycle
+//if use (), just run. if not use, function is when run explain have event
 function sum(a, b) {
   consoole.log(a + b);
 }

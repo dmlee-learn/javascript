@@ -1,0 +1,4 @@
+data save like hash (key and value)
+localStorage.setItem(USER_NAME, loginInput.value);
+localStorage.getItem(USER_NAME);
+localStorage.removeItem(USER_NAME);
