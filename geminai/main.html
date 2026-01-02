@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='css' media='screen' href='main.css'> -->
+    <script src='./js/base.js'></script>
+</head>
+<body>
+    <h1>Gemini AI 사용</h1>
+    <br><br>
+    
+    <select id="agent">
+        <option value="gemini" selected>Gemini</option>
+        <option value="chatgpt">ChatGPT</option>
+    </select>
+    <select id="model">
+        <option value="gemini-2.0-flash">Gemini 2.0 Flash (권장)</option>
+        <option value="gemini-2.5-flash">긴문장 gemini-2.5-flash</option>
+        <option value="gemini-2.5-flash-lite">긴문장 gemini-2.5-flash-lite</option>
+        <option value="gemini-3-flash">긴문장 gemini-3-flash</option>
+        <option value="gemma-3-27b">짧은문장 gemma-3-27b</option>
+        <option value="gemma-3-12b">짧은문장 gemma-3-12b</option>
+
+    </select>
+    <br><br>
+    prompt
+    <textarea id="prompt" placeholder="기능을 입력해주세요" rows="3" style="width: 100%;">다음 텍스트를 자연스러운 한국어로 번역해줘</textarea>
+    <br><br>
+    <textarea id="inputText" placeholder="내용을 입력하세요 (영어 등)" rows="5" style="width: 100%;"></textarea>
+    <button id="translateBtn">AI RUN</button>
+    <div id="result" style="margin-top: 20px; white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; min-height: 50px;"></div>
+
+    <!-- Google Generative AI SDK 로드 -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+
+    <script type="module">
+      // 공통 로직과 Gemini 에이전트 로드
+      import "./js/base.js";
+      import "./js/gemini_agent.js";
+      // 추후 ChatGPT 등 추가 시: import "./chatgpt_agent.js";
+    </script>
+</body>
+</html>

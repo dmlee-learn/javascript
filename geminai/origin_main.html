@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h1>Gemini AI 사용</h1>
+
+    model
+    <select id="model">
+        <option value="gemini-2.0-flash">Gemini 2.0 Flash (권장)</option>
+        <option value="gemini-2.5-flash">긴문장 gemini-2.5-flash</option>
+        <option value="gemini-2.5-flash-lite">긴문장 gemini-2.5-flash-lite</option>
+        <option value="gemini-3-flash">긴문장 gemini-3-flash</option>
+        <!-- <option value="gemma-3-27b">짧은문장 gemma-3-27b</option> -->
+        <option value="gemma-3-12b">짧은문장 gemma-3-12b</option>
+    </select>
+    <br><br>
+    prompt
+    <textarea id="prompt" placeholder="기능을 입력해주세요" rows="3" style="width: 100%;">다음 텍스트를 자연스러운 한국어로 번역해줘</textarea>
+    <br><br>
+    <textarea id="inputText" placeholder="내용을 입력하세요 (영어 등)" rows="5" style="width: 100%;"></textarea>
+    <button id="translateBtn">한국어로 번역하기</button>
+    <div id="result" style="margin-top: 20px; white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; min-height: 50px;"></div>
+
+    <!-- Google Generative AI SDK 로드 -->
+    <script type="importmap">
+        {
+            "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        // 주의: 클라이언트 측(브라우저)에 API 키를 직접 넣으면 키가 노출될 위험이 있습니다.
+        // 테스트 목적으로만 사용하시고, 실제 배포 시에는 백엔드를 통해 호출하는 것이 안전합니다.
+        const API_KEY = "input geminai key"; 
+
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        const nextModel = () => {
+            const modelSelect = document.getElementById('model');
+            if (modelSelect.selectedIndex < modelSelect.options.length - 1) {
+                modelSelect.selectedIndex++;
+                alert(`⚠️ 무료 사용량이 초과되었습니다. 다음 모델('${modelSelect.options[modelSelect.selectedIndex].text}')로 변경합니다. 다시 버튼을 눌러주세요.`);
+            } else {
+                alert("⚠️ 무료 사용량이 초과되었습니다. 더 이상 사용할 수 있는 모델이 없습니다.");
+            }
+        }
+        document.getElementById('translateBtn').addEventListener('click', async () => {
+            const text = document.getElementById('inputText').value;
+            const selectedModel = document.getElementById('model').value;
+            const prompt_input = document.getElementById('prompt').value;
+            const resultDiv = document.getElementById('result');
+            const model = genAI.getGenerativeModel({ model: selectedModel });
+            
+            if (!text) return;
+            resultDiv.innerText = "진행 중...";
+            
+            const prompt = `${prompt_input}:\n\n${text}`;
+            
+            try {
+                const result = await model.generateContent(prompt);
+                const response = await result.response;
+                resultDiv.innerText = response.text();
+            } catch (error) {
+                console.error("Gemini Agent Error:", error);
+                if (error.message && error.message.includes('429')) {
+                    nextModel();
+                } else if (error.message && error.message.includes('404')) {
+                    alert("⚠️ 지원하지 않는 모델이거나 모델명이 잘못되었습니다.");
+                } else if (error.message && error.message.includes('SAFETY')) {
+                    alert("⚠️ 안전 정책에 의해 답변이 차단되었습니다.");
+                }
+                
+                resultDiv.innerText = "다시 시도해주세요";
+            }
+        });
+    </script>
+</body>
+</html>
